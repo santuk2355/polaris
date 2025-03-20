@@ -6,9 +6,9 @@
   to you under the Apache License, Version 2.0 (the
   "License"); you may not use this file except in compliance
   with the License.  You may obtain a copy of the License at
- 
+
    http://www.apache.org/licenses/LICENSE-2.0
- 
+
   Unless required by applicable law or agreed to in writing,
   software distributed under the License is distributed on an
   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -72,6 +72,8 @@ spec:
           {{- end }}
           image: "{{ tpl .Values.image.repository . }}:{{ tpl .Values.image.tag . | default .Chart.Version }}"
           imagePullPolicy: {{ tpl .Values.image.pullPolicy . }}
+          command: {{-toYaml .Valuees.command | nindent 12 }}
+          args: {{- toYaml .Values.args | nindent 12}}
           {{ if or .Values.storage.secret.name .Values.extraEnv -}}
           env:
             {{- include "polaris.secretToEnv" (list .Values.storage.secret "awsAccessKeyId" "polaris.storage.aws.access-key") | indent 12 -}}

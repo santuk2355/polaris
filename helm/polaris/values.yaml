@@ -619,3 +619,10 @@ tasks:
   maxConcurrentTasks: ~  # 100
   # -- The maximum number of tasks that can be queued up for execution. The default is Integer.MAX_VALUE.
   maxQueuedTasks: ~  # 1000
+
+command:
+    - "bootstrap"
+
+args:
+  - "--realm=polaris"
+  - "--credentials=polaris,root,s3cr3t"
