@@ -72,7 +72,7 @@ spec:
           {{- end }}
           image: "{{ tpl .Values.image.repository . }}:{{ tpl .Values.image.tag . | default .Chart.Version }}"
           imagePullPolicy: {{ tpl .Values.image.pullPolicy . }}
-          command: {{- toYaml .Valuees.command | nindent 12 }}
+          command: {{- toYaml .Values.command | nindent 12 }}
           args: {{- toYaml .Values.args | nindent 12}}
           {{ if or .Values.storage.secret.name .Values.extraEnv -}}
           env:
